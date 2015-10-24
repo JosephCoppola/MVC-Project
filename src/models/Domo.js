@@ -41,7 +41,7 @@ DomoSchema.methods.toAPI = function() {
 	};
 };
 
-DomoSchema.statics.findByOwner = function(ownerID,callback){
+DomoSchema.statics.findByOwner = function(ownerId,callback){
 	
 	var search  = {
 		owner: mongoose.Types.ObjectId(ownerId)
