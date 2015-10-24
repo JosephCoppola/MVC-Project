@@ -5,6 +5,8 @@ var Domo = models.Domo;
 
 var makerPage = function(req,res){
 	
+	console.log(req.session);
+	
 	Domo.DomoModel.findByOwner(req.session.account._id,function(err,docs){
 		
 		if(err)
