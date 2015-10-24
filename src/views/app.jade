@@ -19,11 +19,11 @@ block body
       div.domo
         h3.emptyDomo No Domos yet
     else
-        each val in domos
-          div.domo
-            img(class="domoFace",src="/assets/img/domoface.jpeg",alt="domo face")
-            h3.domoName Name: #{val.name}
-            h3.domoAge Age: #{val.age}
+      each val in domos
+        div.domo
+          img(class="domoFace",src="/assets/img/domoface.jpeg",alt="domo face")
+          h3.domoName Name: #{val.name}
+          h3.domoAge Age: #{val.age}
   #domoMessage
     img#speech(src="/assets/img/speech.png", alt="speech box")
     h3
