@@ -29,7 +29,7 @@ var bypassSecure = function(req,res,next){
 }
 
 module.exports.requiresLogin = requiresLogin;
-module.exports.requriesLogout = requiresLogout;
+module.exports.requiresLogout = requiresLogout;
 
 if(process.env.NODE_ENV === "production"){
 	module.exports.requiresSecure = requiresSecure;
