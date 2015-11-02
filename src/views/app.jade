@@ -13,6 +13,8 @@ block body
       input#domoName(type="text", name="name", placeholder="Domo Name")
       label(for="age") Age: 
       input#domoAge(type="text", name="age", placeholder="Domo Age")
+      label(for="checkbox") Friendly?: 
+      input#domoFriendly(type="checkbox", name="friendly")
       input(type="hidden",name="_csrf",value="#{csrfToken}")
       a#makeDomoSubmit(class="makeDomoSubmit", href="#") Make Domo
   section#domos
@@ -25,6 +27,7 @@ block body
           img(class="domoFace",src="/assets/img/domoface.jpeg",alt="domo face")
           h3.domoName Name: #{val.name}
           h3.domoAge Age: #{val.age}
+          h3.domoFriendly Friendly?: #{val.friendly}
   #domoMessage
     img#speech(src="/assets/img/speech.png", alt="speech box")
     h3

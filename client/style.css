@@ -50,7 +50,7 @@ nav:nth-child(1) {
 .domoForm {
     border: 2px solid #338acc;
     height: 35px;
-    width: 700px;
+    width: 800px;
     margin-top:0px;
     padding-top:10px;
     background-color: #55acee;
@@ -65,6 +65,11 @@ nav:nth-child(1) {
     font-size: 1.2em;
     float: left;
     color: white;
+}
+
+.domoForm input[type=checkbox]{
+    margin-left: 10px;
+    margin-top: 5px;
 }
 
 .domoForm input[type=text] {

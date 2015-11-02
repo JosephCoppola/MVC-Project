@@ -28,6 +28,7 @@ var makeDomo = function(req, res){
 	var domoData = {
 		name: req.body.name,
 		age: req.body.age,
+		friendly: req.body.friendly,
 		owner: req.session.account._id
 	};
 	
