@@ -40,10 +40,17 @@ var DomoSchema = new mongoose.Schema({
 });
 
 DomoSchema.methods.toAPI = function() {
+	
+	var isFriendly = "No";
+	if(this.friendly)
+	{
+		isFriendly = "Yes";
+	}
+	
 	return {
 		name: this.name,
 		age: this.age,
-		friendly: this.friendly	
+		friendly: isFriendly	
 	};
 };
 
