@@ -25,9 +25,16 @@ var makeDomo = function(req, res){
 		return res.status(400).json({error:"Both name and age are required"});
 	}
 	
+	var isFriendly = "No";
+	if(req.body.friendly)
+	{
+		isFriendly = "Yes";
+	}
+	
 	var domoData = {
 		name: req.body.name,
 		age: req.body.age,
+		friendly: isFriendly,
 		owner: req.session.account._id
 	};
 	
