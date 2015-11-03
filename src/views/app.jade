@@ -24,13 +24,13 @@ block body
     else
       each val in domos
         div.domo
-          img(class="domoFace",src="/assets/img/domoface.jpeg",alt="domo face")
+          if val.friendly == "Yes"
+            img(class="domoFace",src="/assets/img/face.png",alt="domo face")
+          else
+             img(class="domoFace",src="/assets/img/domoface.jpeg",alt="domo face")
           h3.domoName Name: #{val.name}
           h3.domoAge Age: #{val.age}
           h3.domoFriendly Friendly?: #{val.friendly}
-        div
-          - console.log(val)
-        div
   #domoMessage
     img#speech(src="/assets/img/speech.png", alt="speech box")
     h3

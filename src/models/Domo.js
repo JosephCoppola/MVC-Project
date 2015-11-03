@@ -23,7 +23,7 @@ var DomoSchema = new mongoose.Schema({
 	},
 	
 	friendly:{
-		type: Boolean,
+		type: String,
 		required: true	
 	},
 	
@@ -40,17 +40,10 @@ var DomoSchema = new mongoose.Schema({
 });
 
 DomoSchema.methods.toAPI = function() {
-	
-	var isFriendly = "No";
-	if(this.friendly)
-	{
-		isFriendly = "Yes";
-	}
-	
 	return {
 		name: this.name,
 		age: this.age,
-		friendly: isFriendly	
+		friendly: this.friendly	
 	};
 };
 
@@ -60,7 +53,7 @@ DomoSchema.statics.findByOwner = function(ownerId,callback){
 		owner: mongoose.Types.ObjectId(ownerId)
 	};
 	
-	return DomoModel.find(search).select("name age").exec(callback);
+	return DomoModel.find(search).select("name age friendly").exec(callback);
 };
 
 DomoModel = mongoose.model('Domo',DomoSchema);
