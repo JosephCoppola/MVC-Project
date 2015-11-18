@@ -25,11 +25,11 @@ var url = require('url');
 var staticAssets = {
   //asset path for devs
   development: {
-    path: 'clientDev/'
+    path: 'client/'
   },
   //asset paths for testing
   test: {
-    path: 'clientDev/'
+    path: 'client/'
   },
   //asset paths for staging
   //Staging environments are a complete mirror of production so that when it goes into production, you know
