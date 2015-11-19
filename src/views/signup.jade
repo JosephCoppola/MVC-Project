@@ -4,11 +4,14 @@ block append style
 block body
   nav
     a(href="/login")
-      img#logo(src="/assets/img/face.png", alt="face logo")
+      img#logo(src="/assets/img/color_Logo.png", alt="logo")
     .navlink
       a(href="/login") Login
     .navlink
       a(href="/signup") Sign up
+    #title
+      h3
+       span Match Level Maker
   section#signup
     form#signupForm(class="mainForm", name="signupForm", action="/signup", method="POST")
       label(for="username") Username: 
