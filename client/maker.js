@@ -1,6 +1,10 @@
 "use strict";
 
 $(document).ready(function() {
+    
+    var color = $("#secondaryColor").attr( "color" );
+    
+    $('body').css('background', color);
 
     function handleError(message) {
         $("#errorMessage").text(message);

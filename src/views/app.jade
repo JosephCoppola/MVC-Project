@@ -2,7 +2,8 @@ extends ./base.jade
 block append style
     link(rel="stylesheet", type="text/css", href="/assets/style.css")
 block body
-  nav(id="navApp")
+  div(id = "secondaryColor" style = "display:hidden" color = "" + pageColors.secondary)
+  nav(id="navApp" style = "background:" + pageColors.primary)
     a(href="/login")
       img#logo(src="/assets/img/color_Logo.png", alt="logo")
     .navlink
