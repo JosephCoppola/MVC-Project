@@ -1,10 +1,19 @@
 "use strict";
 
+var rColor = 100;
+var gColor = 100;
+var bColor = 100;
+
 $(document).ready(function() {
     
     var color = $("#secondaryColor").attr( "color" );
     
     $('body').css('background', color);
+    $("#colorZone").css('background',"rgb(" + rColor + "," + gColor + "," + bColor);
+    
+    $("#red").on("input", function(){rColor = this.value; $("#colorZone").css('background',"rgb(" + rColor + "," + gColor + "," + bColor); });
+    $("#green").on("input", function(){gColor = this.value; $("#colorZone").css('background',"rgb(" + rColor + "," + gColor + "," + bColor); });
+    $("#blue").on("input", function(){bColor = this.value; $("#colorZone").css('background',"rgb(" + rColor + "," + gColor + "," + bColor); });
 
     function handleError(message) {
         $("#errorMessage").text(message);
@@ -45,5 +54,4 @@ $(document).ready(function() {
         
         return false;
     });
-    
 });
