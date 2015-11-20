@@ -9,17 +9,15 @@ block body
       a(href="/login") Login
     .navlink
       a(href="/signup") Sign up
-    #title
-      h3
-       span Match Level Maker
   section#login
-    form#loginForm(class="mainForm", name="loginForm", action="/login", method="POST")
-      label(for="username") Username: 
-      input#user(type="text", name="username", placeholder="username")
-      label(for="pass") Password: 
-      input#pass(type="password", name="pass", placeholder="password")
-      input(type="hidden",name="_csrf",value="#{csrfToken}")
-      a#loginSubmit(class="formSubmit", href="#") Sign in
+    section.container
+        .login
+          h1 Login to Match Level Maker
+          form#loginForm(class="mainForm", name="loginForm", action="/login", method="POST")
+            input#user(type="text", name="username", placeholder="username")
+            input#pass(type="password", name="pass", placeholder="password")
+            input(type="hidden",name="_csrf",value="#{csrfToken}")
+            a#loginSubmit(class="button green", href="#") Sign in
   #domoMessage
     img#speech(src="/assets/img/speech.png", alt="speech box")
     h3
