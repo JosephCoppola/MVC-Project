@@ -296,6 +296,18 @@ h3.domoAge {
   border-radius: 3px;
   -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
 }
+
+.signup {
+  outline: 5px solid rgba(72, 84, 99, 0.4);
+  position: relative;
+  margin: 150px auto;
+  padding: 20px 20px 20px;
+  width: 310px;
+  height: 195px;
+  background: rgb(58, 88, 69);
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+}
  
 h1 {
     margin: -20px -20px 21px;
@@ -308,6 +320,7 @@ h1 {
     border-bottom: 1px solid #cfcfcf;
     border-radius: 3px 3px 0 0;
     box-shadow: 0 1px whitesmoke;
+    font-size: 1.17em;
 }
 
 .button {
