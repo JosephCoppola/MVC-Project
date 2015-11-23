@@ -11,9 +11,9 @@ block body
     #title
       h3
        span Match Level Maker
-  section#makeDomo
+  section#makeLevel
     form#levelForm(class="levelForm", name="levelForm", action="/maker", method="POST")
-      div(style = "position:absolute")
+      div(style = "float:left")
         div(class = "slider")
           span R:
           input#red(type='range', value='90', max="255")
@@ -25,8 +25,11 @@ block body
           input#blue(type='range', value='90', max="255")
         input(type="hidden",name="_csrf",value="#{csrfToken}")
         a#addColor(class="addColor", href="#") Add color to Level
-      div(id = "colorZone" style = "float:right; width:50%; height: 110px; margin: 7px; padding-right: 15px")
-  section#domos
+      div(id = "colorZone")
+  section#currentLevel
+    div.blank
+      h3.blankTitle Add colors to start making a level
+  section#levels
     if !domos || domos.length == 0
       div.domo
         h3.emptyDomo No Levels yet

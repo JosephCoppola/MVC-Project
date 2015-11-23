@@ -4,6 +4,8 @@ var rColor = 100;
 var gColor = 100;
 var bColor = 100;
 
+var count = 0;
+
 $(document).ready(function() {
     
     var color = $("#secondaryColor").attr( "color" );
@@ -39,6 +41,25 @@ $(document).ready(function() {
             }
         });        
     }
+    
+    $("#addColor").on("click",function(e){
+       if(count < 8)
+       {
+            if($('#currentLevel').find('h3.blankTitle').length != 0)
+            {
+                $("#currentLevel").empty();  
+            }
+            
+            var rgbString = "rgb(" + $("#red").val() + "," + $("#green").val() + "," + $("#blue").val() + ")";
+       
+            $("#currentLevel").append("<div class=\'color\' style = background:" + rgbString + "></div>"); 
+            count++;
+       }
+       else
+       {
+            handleError("Already at max allowed guesses");  
+       }
+    });
     
     $("#makeDomoSubmit").on("click", function(e) {
         e.preventDefault();
