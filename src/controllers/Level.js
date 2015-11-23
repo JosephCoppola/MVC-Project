@@ -31,7 +31,7 @@ var makeLevel = function(req, res){
 	console.log(req.body.levelArray);
 	
 	var levelData = {
-		levelArray: req.body.levelArray,
+		levelArray: req.body.levelArray.toString(),
 		owner: req.session.account._id
 	};
 	

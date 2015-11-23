@@ -9,6 +9,20 @@ var currentLevelArray = [];
 
 $(document).ready(function() {
     
+    $(".domoName").each(function(index,obj){
+        var color = $(this).html();
+        $(this).empty();
+        
+        var colorArray = color.split(',');
+       
+        for(var x = 0; x < colorArray.length; x+=3)
+        {
+            var colorString = "rgb(" + colorArray[x] + "," + colorArray[x+1] + "," + colorArray[x+2] + ")";
+            
+            $(this).append("<div class = \"color\" style = \"background: " + colorString + "\"></div>");
+        }
+    });
+    
     var color = $("#secondaryColor").attr( "color" );
     
     $('body').css('background', color);
@@ -79,7 +93,7 @@ $(document).ready(function() {
         
         var data = 
          {
-            levelArray:JSON.stringify(currentLevelArray),
+            levelArray: currentLevelArray,
             _csrf:$("#security").val()
          };
 
