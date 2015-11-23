@@ -22,7 +22,7 @@ var makerPage = function(req,res){
 		
 		var _pageColors = {primary:colors[colorIndex],secondary:secondaryColors[colorIndex]};
 		
-		res.render('app', {csrfToken: req.csrfToken(), domos:docs, pageColors:_pageColors});
+		res.render('app', {csrfToken: req.csrfToken(), domos:docs, pageColors:_pageColors, user:req.session.account.username});
 	});
 };
 

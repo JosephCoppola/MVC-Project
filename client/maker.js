@@ -44,7 +44,7 @@ $(document).ready(function() {
     }
     
     $("#addColor").on("click",function(e){
-       if(count < 8)
+       if(count < 14)
        {   
             if($('#currentLevel').find('h3.blankTitle').length != 0)
             {
@@ -82,7 +82,6 @@ $(document).ready(function() {
             levelArray:JSON.stringify(currentLevelArray),
             _csrf:$("#security").val()
          };
-
 
         sendAjax("/maker", data);
         

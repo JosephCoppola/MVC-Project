@@ -15,13 +15,13 @@ block body
     form#levelForm(class="levelForm", name="levelForm", action="/maker", method="POST")
       div(style = "float:left")
         div(class = "slider")
-          span R:
+          span(class = "sliderText" style = "Background: red") R
           input#red(type='range', value='90', max="255")
         div(class = "slider")
-          span G:
+          span(class = "sliderText" style = "Background: green") G
           input#green(type='range', value='90', max="255")
         div(class = "slider")
-          span B:
+          span(class = "sliderText" style = "Background: blue") B
           input#blue(type='range', value='90', max="255")
         input(id = "security" type="hidden",name="_csrf",value="#{csrfToken}")
         a#addColor(class="addColor", href="#") Add color to Level
@@ -31,20 +31,15 @@ block body
       h3.blankTitle Add colors to start making a level
   section#makeLevelButton
     a#addLevel(class="button", href="#") Add Level
+  div#userName #{user}'s Levels
   section#levels
     if !domos || domos.length == 0
       div.domo
         h3.emptyDomo No Levels yet
     else
       each val in domos
-        div.domo
-          if val.friendly == "Yes"
-            img(class="domoFace",src="/assets/img/face.png",alt="domo face")
-          else
-             img(class="domoFace",src="/assets/img/domoface.jpeg",alt="domo face")
-          h3.domoName Name: #{val.name}
-          h3.domoAge Age: #{val.age}
-          h3.domoFriendly Friendly?: #{val.friendly}
+        div.level
+          h3.domoName Name: #{val.levelArray}
   #domoMessage
     img#speech(src="/assets/img/speech.png", alt="speech box")
     h3
