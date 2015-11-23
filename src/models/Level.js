@@ -1,30 +1,19 @@
 var mongoose = require('mongoose');
 var _ = require('underscore');
 
-var DomoModel;
+var LevelModel;
 
 var setName = function(name)
 {
 	return _.escape(name).trim();
 };
 
-var DomoSchema = new mongoose.Schema({
-	name:{
+var LevelSchema = new mongoose.Schema({
+
+	levelArray:{
 		type: String,
 		required: true,
-		trim: true,
-		set: setName
-	},
-	
-	age: {
-		type: Number,
-		min: 0,
-		required: true	
-	},
-	
-	friendly:{
-		type: String,
-		required: true	
+		unique: true	
 	},
 	
 	owner: {
@@ -39,24 +28,22 @@ var DomoSchema = new mongoose.Schema({
 	}
 });
 
-DomoSchema.methods.toAPI = function() {
+LevelSchema.methods.toAPI = function() {
 	return {
-		name: this.name,
-		age: this.age,
-		friendly: this.friendly	
+		levelArray: this.levelArray
 	};
 };
 
-DomoSchema.statics.findByOwner = function(ownerId,callback){
+LevelSchema.statics.findByOwner = function(ownerId,callback){
 	
 	var search  = {
 		owner: mongoose.Types.ObjectId(ownerId)
 	};
 	
-	return DomoModel.find(search).select("name age friendly").exec(callback);
+	return LevelModel.find(search).select("levelArray").exec(callback);
 };
 
-DomoModel = mongoose.model('Domo',DomoSchema);
+LevelModel = mongoose.model('Domo',LevelSchema);
 
-module.exports.DomoModel = DomoModel;
-module.exports.DomoSchema = DomoSchema;
+module.exports.LevelModel = LevelModel;
+module.exports.LevelSchema = LevelSchema;

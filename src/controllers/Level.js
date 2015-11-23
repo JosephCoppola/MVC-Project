@@ -10,7 +10,7 @@ var makerPage = function(req,res){
 	
 	console.log(req.session);
 	
-	Level.DomoModel.findByOwner(req.session.account._id,function(err,docs){
+	Level.LevelModel.findByOwner(req.session.account._id,function(err,docs){
 		
 		if(err)
 		{
@@ -35,7 +35,7 @@ var makeLevel = function(req, res){
 		owner: req.session.account._id
 	};
 	
-	var newDomo = new Level.DomoModel(levelData);
+	var newDomo = new Level.LevelModel(levelData);
 	
 	newDomo.save(function(err) {
 		if(err){
