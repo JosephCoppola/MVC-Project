@@ -23,12 +23,14 @@ block body
         div(class = "slider")
           span B:
           input#blue(type='range', value='90', max="255")
-        input(type="hidden",name="_csrf",value="#{csrfToken}")
+        input(id = "security" type="hidden",name="_csrf",value="#{csrfToken}")
         a#addColor(class="addColor", href="#") Add color to Level
       div(id = "colorZone")
   section#currentLevel
     div.blank
       h3.blankTitle Add colors to start making a level
+  section#makeLevelButton
+    a#addLevel(class="button", href="#") Add Level
   section#levels
     if !domos || domos.length == 0
       div.domo

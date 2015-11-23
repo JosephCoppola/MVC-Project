@@ -231,6 +231,10 @@ nav:nth-child(1) {
   margin: 15px;
 }
 
+#makeLevelButton{
+  text-align: center;
+}
+
 .color{
   width: 90px;
   height: 90px;

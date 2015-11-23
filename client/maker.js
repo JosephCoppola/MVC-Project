@@ -5,6 +5,7 @@ var gColor = 100;
 var bColor = 100;
 
 var count = 0;
+var currentLevelArray = [];
 
 $(document).ready(function() {
     
@@ -44,14 +45,18 @@ $(document).ready(function() {
     
     $("#addColor").on("click",function(e){
        if(count < 8)
-       {
+       {   
             if($('#currentLevel').find('h3.blankTitle').length != 0)
             {
                 $("#currentLevel").empty();  
             }
             
+            currentLevelArray.push($("#red").val());
+            currentLevelArray.push($("#green").val());
+            currentLevelArray.push($("#blue").val());
+            
             var rgbString = "rgb(" + $("#red").val() + "," + $("#green").val() + "," + $("#blue").val() + ")";
-       
+            
             $("#currentLevel").append("<div class=\'color\' style = background:" + rgbString + "></div>"); 
             count++;
        }
@@ -61,17 +66,25 @@ $(document).ready(function() {
        }
     });
     
-    $("#makeDomoSubmit").on("click", function(e) {
+    $("#makeLevelButton").on("click", function(e) {
         e.preventDefault();
     
         $("#domoMessage").animate({width:'hide'},350);
     
-        if($("#domoName").val() == '' || $("#domoAge").val() == '') {
-            handleError("RAWR! All fields are required");
-            return false;
+        if(currentLevelArray.length == 0)
+        {
+            handleError("Add at least one color to guess");
+            return;     
         }
+        
+        var data = 
+         {
+            levelArray:JSON.stringify(currentLevelArray),
+            _csrf:$("#security").val()
+         };
 
-        sendAjax($("#domoForm").attr("action"), $("#domoForm").serialize());
+
+        sendAjax("/maker", data);
         
         return false;
     });
