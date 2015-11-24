@@ -21,6 +21,8 @@ $(document).ready(function() {
             
             $(this).append("<div class = \"color\" style = \"background: " + colorString + "\"></div>");
         }
+        
+         $(this).parent().append("<h3 class = \"domoAge\">" + (colorArray.length/3) + " guesses</h3>")
     });
     
     var color = $("#secondaryColor").attr( "color" );

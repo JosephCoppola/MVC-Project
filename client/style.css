@@ -231,9 +231,9 @@ nav:nth-child(1) {
     margin: 0 auto;
     margin-top: 2px;
     margin-bottom: 2px;
-    border: 2px solid #55acee;
+    border: 2px solid #FFFFFF;
     border-radius: 4px;
-    background-color: #55acee;
+    background-color: rgba(255, 255, 255, 0.14);
     padding: 10px;
     min-height:60px;
     overflow: hidden;
@@ -243,13 +243,13 @@ nav:nth-child(1) {
     transition: border-color 0.2s ease-out;
     border-color: rgba(255,255,255, 0.8);
     transition: background-color 2.6s ease-out;
-    background-color: #66bfff;
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 #levels {
     width: 85%;
     min-width: 400px;
-    border: 2px solid #55acee;
+    border: 2px solid #FFFFFF;
     border-radius: 4px;
     margin: 0 auto;
     margin-top: 10px;
@@ -331,11 +331,10 @@ h3.domoName {
 }
 
 h3.domoAge {
-    float:right;
+    float: right;
     text-align: left;
-    width: 100px;
+    width: 150px;
     font-weight: bold;
-    padding-right: 40px;
     font-size: 1.5em;
 }
 
