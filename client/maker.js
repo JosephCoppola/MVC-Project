@@ -1,6 +1,38 @@
 "use strict";
 
+var rColor = 100;
+var gColor = 100;
+var bColor = 100;
+
+var count = 0;
+var currentLevelArray = [];
+
 $(document).ready(function() {
+    
+    $(".domoName").each(function(index,obj){
+        var color = $(this).html();
+        $(this).empty();
+        
+        var colorArray = color.split(',');
+       
+        for(var x = 0; x < colorArray.length; x+=3)
+        {
+            var colorString = "rgb(" + colorArray[x] + "," + colorArray[x+1] + "," + colorArray[x+2] + ")";
+            
+            $(this).append("<div class = \"color\" style = \"background: " + colorString + "\"></div>");
+        }
+        
+         $(this).parent().append("<h3 class = \"domoAge\">" + (colorArray.length/3) + " guesses</h3>")
+    });
+    
+    var color = $("#secondaryColor").attr( "color" );
+    
+    $('body').css('background', color);
+    $("#colorZone").css('background',"rgb(" + rColor + "," + gColor + "," + bColor);
+    
+    $("#red").on("input", function(){rColor = this.value; $("#colorZone").css('background',"rgb(" + rColor + "," + gColor + "," + bColor); });
+    $("#green").on("input", function(){gColor = this.value; $("#colorZone").css('background',"rgb(" + rColor + "," + gColor + "," + bColor); });
+    $("#blue").on("input", function(){bColor = this.value; $("#colorZone").css('background',"rgb(" + rColor + "," + gColor + "," + bColor); });
 
     function handleError(message) {
         $("#errorMessage").text(message);
@@ -27,19 +59,48 @@ $(document).ready(function() {
         });        
     }
     
-    $("#makeDomoSubmit").on("click", function(e) {
+    $("#addColor").on("click",function(e){
+       if(count < 14)
+       {   
+            if($('#currentLevel').find('h3.blankTitle').length != 0)
+            {
+                $("#currentLevel").empty();  
+            }
+            
+            currentLevelArray.push($("#red").val());
+            currentLevelArray.push($("#green").val());
+            currentLevelArray.push($("#blue").val());
+            
+            var rgbString = "rgb(" + $("#red").val() + "," + $("#green").val() + "," + $("#blue").val() + ")";
+            
+            $("#currentLevel").append("<div class=\'color\' style = background:" + rgbString + "></div>"); 
+            count++;
+       }
+       else
+       {
+            handleError("Already at max allowed guesses");  
+       }
+    });
+    
+    $("#makeLevelButton").on("click", function(e) {
         e.preventDefault();
     
         $("#domoMessage").animate({width:'hide'},350);
     
-        if($("#domoName").val() == '' || $("#domoAge").val() == '') {
-            handleError("RAWR! All fields are required");
-            return false;
+        if(currentLevelArray.length == 0)
+        {
+            handleError("Add at least one color to guess");
+            return;     
         }
+        
+        var data = 
+         {
+            levelArray: currentLevelArray,
+            _csrf:$("#security").val()
+         };
 
-        sendAjax($("#domoForm").attr("action"), $("#domoForm").serialize());
+        sendAjax("/maker", data);
         
         return false;
     });
-    
 });

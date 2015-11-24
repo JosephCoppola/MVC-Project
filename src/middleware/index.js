@@ -26,7 +26,7 @@ var requiresSecure = function(req,res,next){
 
 var bypassSecure = function(req,res,next){
 	next();
-}
+};
 
 module.exports.requiresLogin = requiresLogin;
 module.exports.requiresLogout = requiresLogout;

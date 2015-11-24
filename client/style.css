@@ -4,6 +4,7 @@ html, body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
+    background-color: rgb(76, 90, 107);
 }
 
 #logo {
@@ -14,10 +15,33 @@ html, body {
     border-radius: 8px;
 }
 
+#title{
+    margin: 0 auto;
+    padding-top: 30px;
+    text-align: center;
+    font-size: xx-large;
+    color: white;
+}
+
+#colorZone{
+  border-radius:75%;
+  float: left; 
+  width:20%;
+  height: 110px;
+  margin: 7px 98px; 
+  padding-right: 15px;
+  box-shadow: inset 0 -1px 1px rgba(0,0,0,0.5), /*bottom internal shadow*/
+inset 0 1px 1px rgba(255,255,255,1); /*top internal highlight*/
+}
+
 nav {
     width: 100%;
     height: 50px;
-    background-color: #55acee;
+    background-color: rgb(31, 52, 78);
+}
+
+#navApp {
+    height: 120px;
 }
 
 nav:nth-child(1) {
@@ -38,27 +62,27 @@ nav:nth-child(1) {
     text-decoration: none;
     padding: 5px;
     border-radius: 4px;
-    background-color: #55acee;
     transition: background-color 0.4s ease;
 }
 
 .navlink a:hover {
     transition: background-color 0.8s ease;
-    background-color: #66bdff;
+    color: rgb(92, 112, 39);
 }
 
-.domoForm {
-    border: 2px solid #338acc;
-    height: 35px;
-    width: 800px;
-    margin-top:0px;
+.levelForm {
+    border: 2px solid black;
+    height: 125px;
+    width: 500px;
+    margin: 15px auto;
     padding-top:10px;
-    background-color: #55acee;
+    background: rgba(156, 156, 156, 0.4);
     border-bottom-right-radius: 4px;
     border-top-right-radius: 4px;
+    background: radial-gradient(rgba(255, 255, 255, 0.12),rgba(0, 0, 0, 0.2));
 }
 
-.domoForm label {
+.levelForm label {
     display: inline-block;
     width: 75px;
     margin-left: 10px;
@@ -67,44 +91,40 @@ nav:nth-child(1) {
     color: white;
 }
 
-.domoForm input[type=checkbox]{
+.levelForm input[type=checkbox]{
     margin-left: 10px;
     margin-top: 5px;
 }
 
-.domoForm input[type=text] {
+.levelForm input[type=text] {
     float:left;
 }
 
-.makeDomoSubmit {
+.addColor {
     transition: background-color 0.4s ease;
     display: inline;
-    margin-top: 14px;
+    margin-top: 5px;
     font-size: 1.2em;
-    width: 90px;
-    background-color: #55acee;
+    width: 160px;
     border-radius: 2px;
     padding: 3px 0px;
     color: black;
     text-decoration: none;
-    margin-left: 45px;
-    padding: 5px;
+    margin-left: 12px;
+    padding: 1px;
+    float: left;
 }
 
-.makeDomoSubmit:link, .makeDomoSubmit:visited, .makeDomoSubmit:hover, .makeDomoSubmit:active {
+.addColor:link, .addColor:visited, .addColor:hover, .addColor:active {
     color: white;
 }
 
-.makeDomoSubmit:hover {
+.addColor:hover {
     transition: background-color 0.4s ease;
-    background-color: #338acc;
 }
 
 .mainForm {
-    height: 300px;
-    width: 350px;
     margin: 0 auto;
-    padding-top: 350px;
     font-size: 1.2em;
 }
 
@@ -147,13 +167,21 @@ nav:nth-child(1) {
 #user, #pass, #pass2 {
     text-align: center;
     font-size: 1.1em;
-    width: 180px;
+    width: 100%;
     border-radius: 6px;
+    margin: 4px auto;
 }
 
 #user:focus, #pass:focus, #pass2:focus {
     outline: none;
     box-shadow: 0px 0px 1px 1px #55acee;
+}
+
+#userName{
+  text-align: center;
+  margin-top: 35px;
+  color: white;
+  font-size: 30px;
 }
 
 #domoMessage {
@@ -198,33 +226,82 @@ nav:nth-child(1) {
     transform: rotate(330deg);
 }
 
-#domos {
-    width: 40%;
-    min-width: 400px;
-    border: 2px solid #55acee;
-    border-radius: 4px;
-    margin: 0 auto;
-    margin-top: 100px;
-}
-
-.domo {
+.level {
     width: 95%;
     margin: 0 auto;
     margin-top: 2px;
     margin-bottom: 2px;
-    border: 2px solid #55acee;
+    border: 2px solid #FFFFFF;
     border-radius: 4px;
-    background-color: #55acee;
+    background-color: rgba(255, 255, 255, 0.14);
     padding: 10px;
     min-height:60px;
     overflow: hidden;
 }
 
-.domo:hover {
+.level:hover {
     transition: border-color 0.2s ease-out;
     border-color: rgba(255,255,255, 0.8);
     transition: background-color 2.6s ease-out;
-    background-color: #66bfff;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#levels {
+    width: 85%;
+    min-width: 400px;
+    border: 2px solid #FFFFFF;
+    border-radius: 4px;
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+#currentLevel{
+    width: 80%;
+    margin: 0 auto;
+    padding: 10px 5px 10px 5px;
+    background: rgba(156, 156, 156, 0.4);
+    margin-top: 15px;
+}
+
+#makeLevelButton{
+  text-align: center;
+  margin-top: 8px;
+}
+
+#green, #blue, #red{
+  vertical-align: middle;
+  margin-left: 10px;
+}
+
+.color{
+    width: 100%;
+    height: 15px;
+    background: white;
+    border-radius: 90px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    box-shadow: inset 0 -1px 1px rgba(0,0,0,0.5), /*bottom internal shadow*/
+    inset 0 1px 1px rgba(255,255,255,1); /*top internal highlight*/
+}
+
+.blank {
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    border: 2px solid #000000;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.34);
+    padding: 10px;
+    min-height:60px;
+    overflow: hidden;
+}
+
+.blank:hover {
+    transition: border-color 0.2s ease-out;
+    border-color: rgba(255,255,255, 0.8);
+    transition: background-color 2.6s ease-out;
+     background-color: rgba(255, 255, 255, 0.8);
 }
 
 img.domoFace {
@@ -237,7 +314,7 @@ img.domoFace {
     float:left;
 }
 
-h3.emptyDomo {
+h3.blankTitle {
     width: 400px;
     font-size: 1.5em;
     margin: 0 auto;
@@ -254,11 +331,10 @@ h3.domoName {
 }
 
 h3.domoAge {
-    float:right;
+    float: right;
     text-align: left;
-    width: 100px;
+    width: 150px;
     font-weight: bold;
-    padding-right: 40px;
     font-size: 1.5em;
 }
 
@@ -268,4 +344,163 @@ h3.domoAge {
 
 .domo:last-child {
     margin-bottom:10px;
+}
+
+.container {
+  margin: 165px auto;
+  width: 640px;
+}
+
+.login {
+  outline: 5px solid rgba(72, 84, 99, 0.4);
+  position: relative;
+  margin: 0 auto;
+  padding: 20px 20px 20px;
+  width: 310px;
+  height: 150px;
+  background: rgb(58, 88, 69);
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.signup {
+  outline: 5px solid rgba(72, 84, 99, 0.4);
+  position: relative;
+  margin: 150px auto;
+  padding: 20px 20px 20px;
+  width: 310px;
+  height: 195px;
+  background: rgb(58, 88, 69);
+  border-radius: 3px;
+  -webkit-box-shadow: 0 0 200px rgba(255, 255, 255, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+ 
+h1 {
+    margin: -20px -20px 21px;
+    line-height: 40px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+    text-shadow: 0 1px black;
+    background: #5D7967;
+    border-bottom: 1px solid #cfcfcf;
+    border-radius: 3px 3px 0 0;
+    box-shadow: 0 1px whitesmoke;
+    font-size: 1.17em;
+}
+
+.button {
+  margin: 0 0 5px;
+  padding: 0 12px;
+  height: 28px;
+  line-height: 28px;
+  font-size: 11px;
+  font-weight: bold;
+  color: #555555;
+  text-decoration: none;
+  text-shadow: 0 1px white;
+  background: #dfdfdf;
+  border-width: 1px 1px 0;
+  border-color: #cecece #bababa #a8a8a8;
+  border-radius: 3px 3px 2px 2px;
+  outline: 0;
+  display: inline-block;
+  vertical-align: baseline;
+  zoom: 1;
+  *display: inline;
+  *vertical-align: auto;
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+  background-image: -webkit-linear-gradient(top, #f1f1f1, #dfdfdf 70%, #dadada);
+  background-image: -moz-linear-gradient(top, #f1f1f1, #dfdfdf 70%, #dadada);
+  background-image: -o-linear-gradient(top, #f1f1f1, #dfdfdf 70%, #dadada);
+  background-image: linear-gradient(to bottom, #f1f1f1, #dfdfdf 70%, #dadada);
+  -webkit-box-shadow: inset 0 1px #fdfdfd, inset 0 0 0 1px #eaeaea, 0 1px #a8a8a8, 0 3px #bbbbbb, 0 4px #a8a8a8, 0 5px 2px rgba(0, 0, 0, 0.25);
+  box-shadow: inset 0 1px #fdfdfd, inset 0 0 0 1px #eaeaea, 0 1px #a8a8a8, 0 3px #bbbbbb, 0 4px #a8a8a8, 0 5px 2px rgba(0, 0, 0, 0.25);
+}
+.button:hover, .button:active {
+  background: #dfdfdf;
+  border-top-color: #c9c9c9;
+}
+.button:active {
+  vertical-align: -5px;
+  margin-bottom: 0;
+  padding: 1px 13px 0;
+  border-width: 0;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(0, 0, 0, 0.4), 0 1px white;
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(0, 0, 0, 0.4), 0 1px white;
+}
+
+.button.green:active{
+  margin-bottom: 0;
+  border-width: 0;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(0, 0, 0, 0.4), 0 1px white;
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(0, 0, 0, 0.4), 0 1px white;
+}
+
+.button.green {
+  margin: 10px 83px;
+  font-size: 1em;
+  width: 120px;
+  text-align: center;
+  color: #465f25;
+  text-shadow: 0 1px #d9f3b5;
+  background: #94d362;
+  border-color: #91ce5e #7ab04b #5e903f;
+  background-image: -webkit-linear-gradient(top, #c0eb85, #94d362 70%, #8ed258);
+  background-image: -moz-linear-gradient(top, #c0eb85, #94d362 70%, #8ed258);
+  background-image: -o-linear-gradient(top, #c0eb85, #94d362 70%, #8ed258);
+  background-image: linear-gradient(to bottom, #c0eb85, #94d362 70%, #8ed258);
+  -webkit-box-shadow: inset 0 1px #d9f3b5, inset 0 0 0 1px #b1e095, 0 1px #5e903f, 0 3px #6da445, 0 4px #5e903f, 0 5px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 1px #d9f3b5, inset 0 0 0 1px #b1e095, 0 1px #5e903f, 0 3px #6da445, 0 4px #5e903f, 0 5px 2px rgba(0, 0, 0, 0.4);
+}
+
+.button.blue {
+  color: #236277;
+  text-shadow: 0 1px #c2ecf9;
+  background: #61cdf3;
+  border-color: #6fbad1 #3fa3c0 #3583ab;
+  background-image: -webkit-linear-gradient(top, #9be5fa, #61cdf3 70%, #5fbde8);
+  background-image: -moz-linear-gradient(top, #9be5fa, #61cdf3 70%, #5fbde8);
+  background-image: -o-linear-gradient(top, #9be5fa, #61cdf3 70%, #5fbde8);
+  background-image: linear-gradient(to bottom, #9be5fa, #61cdf3 70%, #5fbde8);
+  -webkit-box-shadow: inset 0 1px #c5f0fd, inset 0 0 0 1px #8ad1eb, 0 1px #3583ab, 0 3px #3f9db8, 0 4px #3583ab, 0 5px 2px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 1px #c5f0fd, inset 0 0 0 1px #8ad1eb, 0 1px #3583ab, 0 3px #3f9db8, 0 4px #3583ab, 0 5px 2px rgba(0, 0, 0, 0.4);
+}
+
+.button.blue:hover {
+  background: #61cdf3;
+  border-top-color: #3eaac9;
+}
+
+.button.blue:active {
+  background: #61cdf3;
+  border-top-color: #3eaac9;
+  vertical-align: -5px;
+  margin-bottom: 0;
+  padding: 1px 13px 0;
+  border-width: 0;
+  border-radius: 3px;
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(0, 0, 0, 0.4), 0 1px white;
+  box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3), inset 0 1px 1px rgba(0, 0, 0, 0.4), 0 1px white;
+}
+
+.slider{
+  padding-left: 15px;
+}
+
+.sliderText{
+  background: rgba(255, 255, 255, 0.4);
+  padding: 2px;
+  border: -3px solid rgba(255, 255, 255, 0.31);
+  border-radius: 4px;
+  text-align: center;
+  box-shadow: inset 0 -1px 1px rgba(0,0,0,0.5), /*bottom internal shadow*/
+              inset 0 1px 1px rgba(255,255,255,1);
+  color: white;
+  text-align: center;
+  vertical-align: middle;
 }

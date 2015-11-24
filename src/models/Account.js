@@ -29,7 +29,6 @@ var AccountSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     }
-
 });
 
 AccountSchema.methods.toAPI = function() {

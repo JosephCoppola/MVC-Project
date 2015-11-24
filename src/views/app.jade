@@ -2,35 +2,44 @@ extends ./base.jade
 block append style
     link(rel="stylesheet", type="text/css", href="/assets/style.css")
 block body
-  nav
+  div(id = "secondaryColor" style = "display:hidden" color = "" + pageColors.secondary)
+  nav(id="navApp" style = "background:" + pageColors.primary)
     a(href="/login")
-      img#logo(src="/assets/img/face.png", alt="face logo")
+      img#logo(src="/assets/img/color_Logo.png", alt="logo")
     .navlink
       a(href="/logout") Log out
-  section#makeDomo
-    form#domoForm(class="domoForm", name="domoForm", action="/maker", method="POST")
-      label(for="name") Name: 
-      input#domoName(type="text", name="name", placeholder="Domo Name")
-      label(for="age") Age: 
-      input#domoAge(type="text", name="age", placeholder="Domo Age")
-      label(for="checkbox") Friendly?: 
-      input#domoFriendly(type="checkbox", name="friendly")
-      input(type="hidden",name="_csrf",value="#{csrfToken}")
-      a#makeDomoSubmit(class="makeDomoSubmit", href="#") Make Domo
-  section#domos
+    #title
+      h3
+       span Match Level Maker
+  section#makeLevel
+    form#levelForm(class="levelForm", name="levelForm", action="/maker", method="POST")
+      div(style = "float:left")
+        div(class = "slider")
+          span(class = "sliderText" style = "Background: red") R
+          input#red(type='range', value='90', max="255")
+        div(class = "slider")
+          span(class = "sliderText" style = "Background: green") G
+          input#green(type='range', value='90', max="255")
+        div(class = "slider")
+          span(class = "sliderText" style = "Background: blue") B
+          input#blue(type='range', value='90', max="255")
+        input(id = "security" type="hidden",name="_csrf",value="#{csrfToken}")
+        a#addColor(class="addColor", href="#") Add color to Level
+      div(id = "colorZone")
+  section#currentLevel
+    div.blank
+      h3.blankTitle Add colors to start making a level
+  section#makeLevelButton
+    a#addLevel(class="button", href="#") Add Level
+  div#userName #{user}'s Levels
+  section#levels
     if !domos || domos.length == 0
       div.domo
-        h3.emptyDomo No Domos yet
+        h3.emptyDomo No Levels yet
     else
       each val in domos
-        div.domo
-          if val.friendly == "Yes"
-            img(class="domoFace",src="/assets/img/face.png",alt="domo face")
-          else
-             img(class="domoFace",src="/assets/img/domoface.jpeg",alt="domo face")
-          h3.domoName Name: #{val.name}
-          h3.domoAge Age: #{val.age}
-          h3.domoFriendly Friendly?: #{val.friendly}
+        div.level
+          h3.domoName #{val.levelArray}
   #domoMessage
     img#speech(src="/assets/img/speech.png", alt="speech box")
     h3
