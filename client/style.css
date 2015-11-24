@@ -215,10 +215,10 @@ nav:nth-child(1) {
     font-style: italic;
 }
 
-#domo {
+#ross {
     z-index: 225;
-    margin-top: -20px;
-    margin-left: 135px;
+    margin-top: -43px;
+    margin-left: 98px;
     height: 450px;
     width: 300px;
     -ms-transform: rotate(330deg);

@@ -78,7 +78,7 @@ $(document).ready(function() {
        }
        else
        {
-            handleError("Already at max allowed guesses");  
+            handleError("Can't be adding so many colors in there");  
        }
     });
     
@@ -89,7 +89,7 @@ $(document).ready(function() {
     
         if(currentLevelArray.length == 0)
         {
-            handleError("Add at least one color to guess");
+            handleError("Add one little color to your masterpiece");
             return;     
         }
         
