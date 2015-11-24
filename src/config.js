@@ -65,7 +65,7 @@ var http = {
   //http config vars for production
   production: {
     port: process.env.PORT || process.env.NODE_PORT || 3000,
-    baseUrl: 'http://appName.herokuapp.com'
+    baseUrl: 'http://matchlevelmaker.herokuapp.com'
   }
 };
 
