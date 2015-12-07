@@ -1,0 +1,21 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    style(type='text/css').
+      body { margin: 0; padding: 0; background: #999;}
+      canvas { display: block; margin: 0.5em auto; background: #fff; }
+    title Match
+  body
+    canvas(width='640', height='480')
+      | Use a browser that supports Canvas please
+    script(src='/assets/matchJS/match.js')
+    script(src='/assets/matchJS/loader.js')
+    script(src='/assets/matchJS/drawLib.js')
+    script(src='/assets/matchJS/utils.js')
+    script(src='/assets/matchJS/button.js')
+    script(src='/assets/matchJS/buttonControls.js')
+    script(src='/assets/matchJS/levelsFile.js')
+    script(src='/assets/matchJS/level.js')
+    script(src='http://code.createjs.com/preloadjs-0.4.1.min.js')
+    script(src='http://code.createjs.com/soundjs-0.5.2.min.js')

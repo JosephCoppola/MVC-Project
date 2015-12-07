@@ -9,6 +9,7 @@ var router = function(app){
 	app.get("/logout",mid.requiresLogin, controllers.Account.logout);
 	app.get("/maker",mid.requiresLogin, controllers.Level.makerPage);
 	app.post("/maker",mid.requiresLogin, controllers.Level.make);
+	app.get("/play", controllers.Level.playPage);
 	app.get("/",mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 };
 
