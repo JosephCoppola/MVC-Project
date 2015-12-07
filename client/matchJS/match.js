@@ -62,7 +62,7 @@ app.match = {
 			this.rgbValues = [0,0,0];
 			
 			this.image = new Image();
-			this.image.src = "ProgressPics/HowtoPlayPractice.png";
+			this.image.src = "assets/img/HowtoPlayPractice.png";
 			
 			this.gameState = 0;
 
@@ -139,7 +139,7 @@ app.match = {
 			this.ctx.fillStyle = "black";
 			this.ctx.font="20px Georgia";
 			this.ctx.fillText("Made by Joe Coppola",this.WIDTH - 100,this.HEIGHT - 35);
-			this.ctx.fillText("Game still under construction! Expect regular updates!",this.WIDTH - 242,this.HEIGHT - 15);
+			this.ctx.fillText("Game still under construction!",this.WIDTH - 142,this.HEIGHT - 15);
 			this.ctx.restore();
 		}
 		//Practice Mode
