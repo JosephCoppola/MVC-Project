@@ -1,4 +1,6 @@
 doctype html
+block append style
+    link(rel="stylesheet", type="text/css", href="/assets/style.css")
 html(lang='en')
   head
     meta(charset='utf-8')
@@ -7,6 +9,14 @@ html(lang='en')
       canvas { display: block; margin: 0.5em auto; background: #fff; }
     title Match
   body
+    nav(id="navApp")
+      a(href="/login")
+        img#logo(src="/assets/img/color_Logo.png", alt="logo")
+      .navlink
+        a(href="/maker") Return
+      #title
+        h3
+         span Match
     canvas(width='640', height='480')
       | Use a browser that supports Canvas please
     script(src='/assets/matchJS/match.js')
