@@ -18,6 +18,7 @@ block body
             input#pass(type="password", name="pass", placeholder="password")
             input(type="hidden",name="_csrf",value="#{csrfToken}")
             a#loginSubmit(class="button green", href="#") Sign in
+          a(href="/play" , class="button green") Or go play Match!
   #domoMessage
     img#speech(src="/assets/img/speech.png", alt="speech box")
     h3
