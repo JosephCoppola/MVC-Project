@@ -26,6 +26,10 @@ var makerPage = function(req,res){
 	});
 };
 
+var playPage = function(req,res){
+	res.render('match');
+}
+
 var makeLevel = function(req, res){
 	
 	console.log(req.body.levelArray);
@@ -47,5 +51,6 @@ var makeLevel = function(req, res){
 	});
 };
 
+module.exports.playPage = playPage;
 module.exports.makerPage = makerPage;
 module.exports.make = makeLevel;
