@@ -30,18 +30,32 @@ var playPage = function(req,res){
 	res.render('match');
 }
 
+var levelsPage = function(req,res){
+	
+	Level.LevelModel.getAllLevels(function(err,docs){
+		console.log(docs);
+		
+		var colorIndex = Math.floor(Math.random() * 5);
+		
+		var _pageColors = {primary:colors[colorIndex],secondary:secondaryColors[colorIndex]};
+		
+		res.render('levels',{pageColors:_pageColors});
+	});
+}
+
 var makeLevel = function(req, res){
 	
 	console.log(req.body.levelArray);
 	
 	var levelData = {
 		levelArray: req.body.levelArray.toString(),
-		owner: req.session.account._id
+		owner: req.session.account._id,
+		creator: req.session.accound.username
 	};
 	
-	var newDomo = new Level.LevelModel(levelData);
+	var newLevel = new Level.LevelModel(levelData);
 	
-	newDomo.save(function(err) {
+	newLevel.save(function(err) {
 		if(err){
 			console.log(err);
 			return res.status(400).json({error:"An error occured"});
@@ -53,4 +67,5 @@ var makeLevel = function(req, res){
 
 module.exports.playPage = playPage;
 module.exports.makerPage = makerPage;
+module.exports.levelsPage = levelsPage;
 module.exports.make = makeLevel;
