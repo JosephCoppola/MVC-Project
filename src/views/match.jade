@@ -4,21 +4,35 @@ block append style
 html(lang='en')
   head
     meta(charset='utf-8')
+    script(src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js")
     style(type='text/css').
       body { margin: 0; padding: 0; background: #999;}
       canvas { display: block; margin: 0.5em auto; background: #fff; }
     title Match
   body
+    div(id = "levels" style = "display:none") #{levels}
     nav(id="navApp")
       a(href="/login")
         img#logo(src="/assets/img/color_Logo.png", alt="logo")
       .navlink
         a(href="/maker") Return
+      .navlink
+        a(href="/leaders") Leaderboard
       #title
         h3
          span Match
-    canvas(width='640', height='480')
-      | Use a browser that supports Canvas please
+    div
+      canvas(width='640', height='480')
+        | Use a browser that supports Canvas please
+      section.scoreContainer  
+        form#loginForm(class="mainForm", name="scoreForm", action="/leaders", method="POST")
+          h3(style = "text-align: center; margin: -5px 0;") Submit Score         
+          input#user(type="text", name="username", placeholder="username")
+          div(style="height: 40px")
+            input(id = "score",name="score",value="" readonly)
+            a#loginSubmit(class="button green", href="#") Submit
+            input(id = "security" type="hidden",name="_csrf",value="#{csrfToken}")
+    br
     script(src='/assets/matchJS/match.js')
     script(src='/assets/matchJS/loader.js')
     script(src='/assets/matchJS/drawLib.js')
@@ -29,3 +43,4 @@ html(lang='en')
     script(src='/assets/matchJS/level.js')
     script(src='https://code.createjs.com/preloadjs-0.4.1.min.js')
     script(src='https://code.createjs.com/soundjs-0.5.2.min.js')
+    script(src="/assets/client.js")

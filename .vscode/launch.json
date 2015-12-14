@@ -8,7 +8,7 @@
 			// Type of configuration.
 			"type": "node",
 			// Workspace relative or absolute path to the program.
-			"program": "C:/Users/josep/Documents/MVC-Project/src/app.js",
+			"program": "C:/Users/josep/Documents/Match_LevelMaker/src/app.js",
 			// Automatically stop program after launch.
 			"stopOnEntry": false,
 			// Command line arguments passed to the program.

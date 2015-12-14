@@ -16,6 +16,11 @@ var LevelSchema = new mongoose.Schema({
 		unique: true	
 	},
 	
+	creator:{
+		type: String,
+		required: true	
+	},
+	
 	owner: {
 		type: mongoose.Schema.ObjectId,
 		required: true,
@@ -43,7 +48,12 @@ LevelSchema.statics.findByOwner = function(ownerId,callback){
 	return LevelModel.find(search).select("levelArray").exec(callback);
 };
 
-LevelModel = mongoose.model('Domo',LevelSchema);
+LevelSchema.statics.getAllLevels = function(callback)
+{
+	return LevelModel.find({}).exec(callback);
+};
+
+LevelModel = mongoose.model('Level',LevelSchema);
 
 module.exports.LevelModel = LevelModel;
 module.exports.LevelSchema = LevelSchema;

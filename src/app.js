@@ -29,7 +29,7 @@ var app = express();
 
 app.disable('x-powered-by');
 app.use('/assets',express.static(path.resolve(config.staticAssets.path)));
-app.use('/sounds',express.static(path.resolve(config.staticAssets.path + "/sounds")))
+app.use('/sounds',express.static(path.resolve(config.staticAssets.path + "/sounds")));
 app.use(compression());
 app.use(bodyParser.urlencoded({
 	extended: true

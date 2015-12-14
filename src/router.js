@@ -10,6 +10,9 @@ var router = function(app){
 	app.get("/maker",mid.requiresLogin, controllers.Level.makerPage);
 	app.post("/maker",mid.requiresLogin, controllers.Level.make);
 	app.get("/play", controllers.Level.playPage);
+	app.get("/levels",mid.requiresLogin, controllers.Level.levelsPage);
+	app.get("/leaders",controllers.Leaderboard.leaderPage);
+	app.post("/leaders",controllers.Leaderboard.makeLeader);
 	app.get("/",mid.requiresSecure, mid.requiresLogout, controllers.Account.loginPage);
 };
 

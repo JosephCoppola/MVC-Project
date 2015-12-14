@@ -15,7 +15,7 @@
     "Login",
     "PBKDF2"
   ],
-  "author": "Cody Van De Mark",
+  "author": "Joseph Coppola",
   "license": "Apache 2.0",
   "dependencies": {
     "body-parser": "^1.9.1",

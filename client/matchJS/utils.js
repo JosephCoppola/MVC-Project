@@ -202,7 +202,9 @@ app.utils = function(){
 
 		for(var i = 0; i < levelsArray.length; i++)
 		{
-			arrayOfLevelObjects.push(new app.Level(levelsArray[i].level,levelsArray[i].rgbValues,levelsArray[i].time));
+			var levelArray = levelsArray[i].levelArray.split(",");
+			
+			arrayOfLevelObjects.push(new app.Level(levelsArray[i].creator,levelArray,(levelArray.length/3) * 40));
 		}
 
 		return arrayOfLevelObjects;

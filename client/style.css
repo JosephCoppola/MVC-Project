@@ -205,7 +205,7 @@ nav {
 }
 
 #errorMessage {
-    font-size: 1.2em;
+    font-size: 1.0em;
     font-weight: bold;
     color: red;
     font-style: italic;
@@ -249,6 +249,12 @@ nav {
     border-radius: 4px;
     margin: 0 auto;
     margin-top: 10px;
+}
+
+#score{
+   margin: 0px 65px;
+   text-align: center;
+   background: silver;
 }
 
 #currentLevel{
@@ -345,6 +351,11 @@ h3.domoAge {
 .container {
   margin: 165px auto;
   width: 640px;
+}
+
+.scoreContainer {
+  margin: 0 auto;
+  width: 300px;
 }
 
 .login {

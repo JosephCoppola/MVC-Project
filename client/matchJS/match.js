@@ -3,6 +3,25 @@
 
 var app = app || {};
 
+function shuffle(array) {
+  var currentIndex = array.length, temporaryValue, randomIndex ;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
+
 app.match = {
 	// CONSTANT properties
     WIDTH : 640, 
@@ -41,6 +60,8 @@ app.match = {
 	correct : false,
 	correctCounter : 0,
 	correctGuesses : 0,
+	neededGuesses : 0,
+	overallCorrect : 0,
 	mousePos : [],
 	//Difficulty true: hard false: easy
 	difficulty : true,
@@ -66,7 +87,10 @@ app.match = {
 			
 			this.gameState = 0;
 
+			this.levels.allLevels = JSON.parse(document.getElementById('levels').innerHTML);
 			this.levelsArray = app.utils.loadLevels(this.levels.allLevels);
+			shuffle(this.levelsArray);
+			this.neededGuesses = this.levelsArray[0].colors.length/3;
 			
 			this.practiceButtons[0] = new app.Button(this.ctx,50,25,"practice","Hard","#DB0000","red",100,50,30,function(){app.buttonControls.difficulty(app.match.difficulty)});
 			this.practiceButtons[1] = new app.Button(this.ctx,50,this.HEIGHT - 70,"practice","Skip","green","#009900",100,50,30,function(){app.buttonControls.skipColor()});
@@ -104,11 +128,16 @@ app.match = {
 		this.paused = false;
 		this.correctCounter = 0;
 		this.correctGuesses = 0;
+		this.overallCorrect = 0;
 		this.dragging = false;
 		this.selectedSlider = undefined;
 		this.rgbValues = [0,0,0];
 		this.gTime = 0;
 		this.elapsed = 0;
+		this.levels.allLevels = JSON.parse(document.getElementById('levels').innerHTML);
+		this.levelsArray = app.utils.loadLevels(this.levels.allLevels);
+		shuffle(this.levelsArray);
+		this.neededGuesses = this.levelsArray[0].colors.length/3;
 		//Set initial guess
 		this.colorMatches = this.utils.setRandomColorAnswer();
 		//Set initial alphas MAYBE ANOTHER INTIAL FUNCTION?
@@ -118,6 +147,8 @@ app.match = {
 	//GAME LOOP
 	update: function(){
 		requestAnimationFrame(this.update.bind(this));
+		
+		 $(".scoreContainer").hide();
 		
 		//Main Menu
 		if(this.gameState == 0)
@@ -212,12 +243,15 @@ app.match = {
 		}
 		else if(this.gameState == 3)
 		{
+			 $(".scoreContainer").show();
+			 $("#score").val(this.overallCorrect);
+			
 			this.drawLib.clear(this.ctx,0,0,this.WIDTH,this.HEIGHT);
 
 			this.ctx.save();
 			this.ctx.fillStyle = "black";
 			this.ctx.font="20px Georgia";
-			this.ctx.fillText("You have completed all the levels, more coming soon!",this.WIDTH/2 - 230,this.HEIGHT/2);
+			this.ctx.fillText("Submit your score!",this.WIDTH/2,this.HEIGHT/2);
 			this.ctx.restore();
 			
 			this.returnButton.update(this.mousePos);
@@ -246,7 +280,7 @@ app.match = {
 		{
 			//CorrectGuesses
 			//drawScore: function(ctx,x,y,score,fontsize)
-			this.drawLib.drawScore(this.ctx,this.WIDTH * .76,this.HEIGHT * .1,this.correctGuesses,27);
+			this.drawLib.drawString(this.ctx,this.WIDTH * .76,this.HEIGHT * .1,"Correct Guesses: " + this.correctGuesses,27);
 			
 			for(var i=0; i < this.practiceButtons.length;i++)
 			{
@@ -271,8 +305,10 @@ app.match = {
 		}
 		else if(this.gameState == 2)
 		{
-			this.drawLib.drawScore(this.ctx,this.WIDTH * .76,this.HEIGHT * .1,this.correctGuesses,27);
-			this.drawLib.drawTime(this.ctx,this.WIDTH * .12,this.HEIGHT * .1,this.levelsArray[0].remainingTime,27);
+			this.drawLib.drawString(this.ctx,this.WIDTH * .76,this.HEIGHT * .1,"Correct Guesses: " + this.correctGuesses+"/"+this.neededGuesses,27);
+			this.drawLib.drawString(this.ctx,this.WIDTH * .76,this.HEIGHT * .16,"Current Score: " + this.overallCorrect,27);
+			this.drawLib.drawString(this.ctx,this.WIDTH * .30,this.HEIGHT * .9,"Level by: " +this.levelsArray[0].level,27);
+			this.drawLib.drawTime(this.ctx,this.WIDTH * .12,this.HEIGHT * .15,this.levelsArray[0].remainingTime,27);
 
 			for(var i=0; i < this.playButtons.length;i++)
 			{
@@ -327,19 +363,25 @@ app.match = {
 			//If level is completed
 			if(this.levelsArray[0].completed)
 			{
-				if(this.levelsArray.Count == 0)
+				if(this.levelsArray.length == 0)
 				{
 					return;
 				}
 				//Splice off finished level, add to completed list
 				this.completedLevels.push(this.levelsArray.splice(0,1));
-
+				if(this.levelsArray.length != 0)
+				{
+					this.neededGuesses = this.levelsArray[0].colors.length/3;
+				}
+				this.correctGuesses = 0;
 				//NEED CHECK FOR REMAINING LEVELS
 
 				this.elapsed = 0;
-				this.colorMatches = [this.levelsArray[0].colors[0],this.levelsArray[0].colors[1],this.levelsArray[0].colors[2]];
+				if(this.levelsArray[0].colors != null)
+				{
+					this.colorMatches = [this.levelsArray[0].colors[0],this.levelsArray[0].colors[1],this.levelsArray[0].colors[2]];
+				}
 				return;
-				//correctAndAlphas = {correct:false,alphas:[.3,.3,.3]};
 			}
 			else
 			{
@@ -370,6 +412,7 @@ app.match = {
 		if(this.correct && this.correctCounter == 0)
 		{
 			this.correctGuesses++;
+			this.overallCorrect++;
 
 			for(var i = 0; i < this.rgbValues.length; i++)
 			{
