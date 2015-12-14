@@ -21,6 +21,7 @@ app.queue
 
 window.onload = function(){
 	console.log("window.onload called");
+	$(".scoreContainer").hide();
 	app.match.app = app;
 	app.match.levels = app.levelsFile;
 	app.match.drawLib = app.drawLib;

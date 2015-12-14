@@ -251,6 +251,12 @@ nav {
     margin-top: 10px;
 }
 
+#score{
+   margin: 0px 65px;
+   text-align: center;
+   background: silver;
+}
+
 #currentLevel{
     width: 80%;
     margin: 0 auto;
@@ -345,6 +351,11 @@ h3.domoAge {
 .container {
   margin: 165px auto;
   width: 640px;
+}
+
+.scoreContainer {
+  margin: 0 auto;
+  width: 300px;
 }
 
 .login {

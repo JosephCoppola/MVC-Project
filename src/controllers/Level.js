@@ -30,7 +30,7 @@ var playPage = function(req,res){
 	
 	Level.LevelModel.getAllLevels(function(err,docs){
 	
-		res.render('match',{levels:JSON.stringify(docs)});
+		res.render('match',{csrfToken: req.csrfToken(),levels:JSON.stringify(docs)});
 	});
 };
 
@@ -41,7 +41,7 @@ var levelsPage = function(req,res){
 		
 		var _pageColors = {primary:colors[colorIndex],secondary:secondaryColors[colorIndex]};
 		
-		res.render('levels',{pageColors:_pageColors,levels:docs});
+		res.render('levels',{csrfToken: req.csrfToken(),pageColors:_pageColors,levels:docs});
 	});
 };
 

@@ -148,6 +148,8 @@ app.match = {
 	update: function(){
 		requestAnimationFrame(this.update.bind(this));
 		
+		 $(".scoreContainer").hide();
+		
 		//Main Menu
 		if(this.gameState == 0)
 		{
@@ -241,12 +243,15 @@ app.match = {
 		}
 		else if(this.gameState == 3)
 		{
+			 $(".scoreContainer").show();
+			 $("#score").val(this.overallCorrect);
+			
 			this.drawLib.clear(this.ctx,0,0,this.WIDTH,this.HEIGHT);
 
 			this.ctx.save();
 			this.ctx.fillStyle = "black";
 			this.ctx.font="20px Georgia";
-			this.ctx.fillText("You have completed all the levels, more coming soon!",this.WIDTH/2,this.HEIGHT/2);
+			this.ctx.fillText("Submit your score!",this.WIDTH/2,this.HEIGHT/2);
 			this.ctx.restore();
 			
 			this.returnButton.update(this.mousePos);

@@ -10,7 +10,9 @@ var leaderPage = function(req,res){
 	
 	console.log(req.session);
 	
-	Leaderboard.LevelModel.getAllLeaders(function(err,docs){
+	Leaderboard.LeaderboardModel.getAllLeaders(function(err,docs){
+		
+		console.log(docs);	
 		
 		if(err)
 		{
@@ -31,9 +33,8 @@ var makeLeader = function(req, res){
 	//console.log(req.body.levelArray);
 	
 	var leaderData = {
-		levelArray: req.body.levelArray.toString(),
-		owner: req.session.account._id,
-		creator: req.session.account.username
+		name: req.body.username,
+		score: req.body.score
 	};
 	
 	var newLeader = new Leaderboard.LeaderboardModel(leaderData);
@@ -44,9 +45,9 @@ var makeLeader = function(req, res){
 			return res.status(400).json({error:"An error occured"});
 		}
 		
-		res.json({redirect: "/Leaderboard"});
+		res.json({redirect: "/leaders"});
 	});
 };
 
 module.exports.leaderPage = leaderPage;
-module.exports.make = makeLeader;
+module.exports.makeLeader = makeLeader;
