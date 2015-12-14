@@ -25,11 +25,11 @@ var leaderPage = function(req,res){
 		
 		var _pageColors = {primary:colors[colorIndex],secondary:secondaryColors[colorIndex]};
 		
-		res.render('Leaderboard', {csrfToken: req.csrfToken(), domos:docs, pageColors:_pageColors});
+		res.render('leaderboard', {csrfToken: req.csrfToken(), domos:docs, pageColors:_pageColors});
 	});
 };
 
-//Creates a leader in the leaderboard
+//Creates a leader in the leaderboard POST
 var makeLeader = function(req, res){
 	
 	//console.log(req.body.levelArray);
