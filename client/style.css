@@ -316,6 +316,11 @@ img.domoFace {
     float:left;
 }
 
+.emptyDomo{
+    text-align: center;
+    color: white;
+}
+
 h3.blankTitle {
     width: 400px;
     font-size: 1.5em;
