@@ -11,7 +11,7 @@ var LeaderboardSchema = new mongoose.Schema({
 	},
 	
 	score:{
-		type: String,
+		type: Number,
 		required: true	
 	},
 
@@ -30,7 +30,7 @@ LeaderboardSchema.methods.toAPI = function() {
 
 LeaderboardSchema.statics.getAllLeaders = function(callback)
 {
-	return LeaderboardModel.find({}).exec(callback);
+	return LeaderboardModel.find({}).sort({score: -1}).exec(callback);
 };
 
 LeaderboardModel = mongoose.model('Leaderboard',LeaderboardSchema);
