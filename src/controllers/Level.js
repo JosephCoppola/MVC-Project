@@ -39,7 +39,7 @@ var levelsPage = function(req,res){
 		
 		var _pageColors = {primary:colors[colorIndex],secondary:secondaryColors[colorIndex]};
 		
-		res.render('levels',{pageColors:_pageColors});
+		res.render('levels',{pageColors:_pageColors,levels:docs});
 	});
 }
 
@@ -50,7 +50,7 @@ var makeLevel = function(req, res){
 	var levelData = {
 		levelArray: req.body.levelArray.toString(),
 		owner: req.session.account._id,
-		creator: req.session.accound.username
+		creator: req.session.account.username
 	};
 	
 	var newLevel = new Level.LevelModel(levelData);
