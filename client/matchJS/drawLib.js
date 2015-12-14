@@ -56,9 +56,9 @@ app.drawLib = {
 			}
 		},
 		
-		drawScore: function(ctx,x,y,score,fontSize)
+		drawString: function(ctx,x,y,_string,fontSize)
 		{
-			var string = "Correct Guesses: " + score;
+			var string = _string;
 
 			ctx.save();
 
