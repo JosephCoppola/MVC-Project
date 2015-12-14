@@ -32,7 +32,7 @@ var playPage = function(req,res){
 	
 		res.render('match',{levels:JSON.stringify(docs)});
 	});
-}
+};
 
 var levelsPage = function(req,res){
 	
@@ -43,7 +43,7 @@ var levelsPage = function(req,res){
 		
 		res.render('levels',{pageColors:_pageColors,levels:docs});
 	});
-}
+};
 
 var makeLevel = function(req, res){
 	

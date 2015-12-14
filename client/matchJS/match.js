@@ -302,6 +302,7 @@ app.match = {
 		{
 			this.drawLib.drawString(this.ctx,this.WIDTH * .76,this.HEIGHT * .1,"Correct Guesses: " + this.correctGuesses+"/"+this.neededGuesses,27);
 			this.drawLib.drawString(this.ctx,this.WIDTH * .76,this.HEIGHT * .16,"Current Score: " + this.overallCorrect,27);
+			this.drawLib.drawString(this.ctx,this.WIDTH * .30,this.HEIGHT * .9,"Level by: " +this.levelsArray[0].level,27);
 			this.drawLib.drawTime(this.ctx,this.WIDTH * .12,this.HEIGHT * .15,this.levelsArray[0].remainingTime,27);
 
 			for(var i=0; i < this.playButtons.length;i++)

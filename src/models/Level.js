@@ -51,7 +51,7 @@ LevelSchema.statics.findByOwner = function(ownerId,callback){
 LevelSchema.statics.getAllLevels = function(callback)
 {
 	return LevelModel.find({}).exec(callback);
-}
+};
 
 LevelModel = mongoose.model('Level',LevelSchema);
 
