@@ -27,14 +27,16 @@ var makerPage = function(req,res){
 };
 
 var playPage = function(req,res){
-	res.render('match');
+	
+	Level.LevelModel.getAllLevels(function(err,docs){
+	
+		res.render('match',{levels:JSON.stringify(docs)});
+	});
 }
 
 var levelsPage = function(req,res){
 	
 	Level.LevelModel.getAllLevels(function(err,docs){
-		console.log(docs);
-		
 		var colorIndex = Math.floor(Math.random() * 5);
 		
 		var _pageColors = {primary:colors[colorIndex],secondary:secondaryColors[colorIndex]};

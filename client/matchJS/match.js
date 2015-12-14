@@ -66,6 +66,7 @@ app.match = {
 			
 			this.gameState = 0;
 
+			this.levels.allLevels = JSON.parse(document.getElementById('levels').innerHTML);
 			this.levelsArray = app.utils.loadLevels(this.levels.allLevels);
 			
 			this.practiceButtons[0] = new app.Button(this.ctx,50,25,"practice","Hard","#DB0000","red",100,50,30,function(){app.buttonControls.difficulty(app.match.difficulty)});
