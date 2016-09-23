@@ -53,10 +53,10 @@ app.set('views',__dirname + '/views');
 app.use(favicon(__dirname + '/../client/img/favicon.png'));
 app.use(cookieParser());
 
-app.use(csrf());
+//app.use(csrf());
 app.use(function(err,req,res,next){
 	if(err.code !== 'EBADCSRFTOKEN') return next(err);
-	
+
 	return;
 });
 
@@ -66,6 +66,6 @@ app.listen(port,function(err){
 	if(err){
 		throw err;
 	}
-	
+
 	console.log('Listening on port' + port);
 });
